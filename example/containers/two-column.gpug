@@ -1,0 +1,11 @@
+template
+  .two-column
+    .left
+      each child in layout.left.children
+        #{child.kebab}
+    .right
+      each child in layout.right.children
+        #{child.kebab}
+
+- let children = [ ...layout.right.children, ...layout.left.children];
+  include ./includes/script.pug

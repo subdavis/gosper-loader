@@ -10,7 +10,12 @@ module.exports = {
       path: '/user/:id',
 
       // will be built by the webpack-loader into a vue component
-      layout: {},
+      layout: {
+        name: 'Simple',
+        children: [
+          { name: 'HelloWorld' },
+        ],
+      },
 
       // optional meta information about a route.
       // may include additional data that widgets such as a tab widget should
@@ -29,16 +34,29 @@ module.exports = {
   // Should contain RouterView somewhere in its tree if
   // routes are to be displayed.
   root: {
-    source: 
+    children: [
+      {
+        name: 'TwoColumn',
+        // Layout children have a property
+        layout: {
+          left: {
+            children: [],
+          },
+          right: {
+            children: [{ name: 'HelloWorld' }],
+          },
+        }
+      },
+    ],
   },
 
-  // Widget definitions, for use in containers.
+  // Component definitions, for use in containers.
   // Provide default props and namespace, though these can be overridden.
-  widgets: {
+  components: {
     // Widget names are translated into kebab case
     GirderDataBrowser: {
-      // Path to insert ES6 import
-      path: 'components/DataBrowser.vue',
+      // Path to insert ES6 import from project root
+      path: 'src/components/DataBrowser.vue',
 
       // Default namespace of the component.
       namespace: 'girder',
@@ -49,6 +67,13 @@ module.exports = {
         selectEnabled: true,
       },
     },
+    HelloWorld: {
+      path: 'src/components/HelloWorld.vue',
+      props: {
+        namespace: 'default',
+        msg: 'Howdy',
+      },
+    },
     Search: {},
     CreateFolder: {},
     RouterView: {
@@ -56,17 +81,14 @@ module.exports = {
       path: null,
     },
     Tabs: {},
-  },
-
-  // Container definitions, for use in layouts.
-  containers: {
-    Row: {}, // Puts all children into a flex row.
-    Sidebar: {}, // flexbox column with sidebar-style responsiveness and mobile behavior,
+    TwoColumn: {
+      path: 'containers/two-column.gpug',
+    },
   },
 
   // meta can contain any other static configuration you would like to
   // expose to plugins.
   meta: {
-    vuetifyConfig,
+    vuetifyConfig: {},
   },
 };

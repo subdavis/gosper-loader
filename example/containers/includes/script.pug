@@ -1,0 +1,13 @@
+- const uchildren = children.filter((child, index) => children.findIndex(c2 => c2.path === child.path) >= index);
+  script
+    |
+    |
+    each child, index in uchildren
+      | import #{child.name} from '#{child.path}?configpath=#{child.configpath}&cacheIdentifier=#{hash}';
+    |
+    | export default {
+    |   components: {
+    each child in uchildren
+      |  #{child.name},
+    |   }
+    | };

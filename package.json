@@ -2,20 +2,18 @@
   "name": "gosper-loader",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "gosper-loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pug-loader": "^2.4.0",
+    "lodash": "^4.17.11",
+    "pug": "^2.0.3",
     "webpack": "^4.28.4"
   },
   "gosper": {
     "plugins": []
-  },
-  "devDependencies": {
-    "webpack-cli": "^3.2.1"
   }
 }

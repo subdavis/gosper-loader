@@ -1,0 +1,7 @@
+template
+  div
+    each child in children
+      #{child.kebab}
+| 
+| 
+include ./includes/script.pug
